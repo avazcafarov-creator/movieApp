@@ -8,15 +8,14 @@
 import Foundation
 
 final class ActorViewModel {
-    let manager = CoreManager()
+    let manager = ActorManager()
     var items = [ActorResult]()
     
     var succes: (() -> Void)?
     var error: ((String) -> Void)?
     
     func getActorList() {
-        manager.request(model: Actor.self,
-                        endpoint: .popularActor) { data, errorMessage in
+        manager.getPopularActors { data, errorMessage in
             if let errorMessage {
                 self.error?(errorMessage)
             } else if let data {

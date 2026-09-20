@@ -11,7 +11,7 @@ import Alamofire
 class CoreManager {
     
     func request<T: Codable>(model: T.Type,
-                             endpoint: Endpoint,
+                             endpoint: String,
                              method: HTTPMethod = .get,
                              parameter: Parameters? = nil,
                              encoding: EncodingType = .url,

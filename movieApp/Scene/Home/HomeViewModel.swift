@@ -23,7 +23,7 @@ final class HomeViewModel {
     
     private func getPopularMovies() {
         manager.request(model: Movie.self,
-                        endpoint: .popularMovie) { data, errorMessage in
+                        endpoint: Endpoint.popularMovie.rawValue) { data, errorMessage in
             if let errorMessage {
                 self.error?(errorMessage)
             } else if let data {
@@ -35,7 +35,7 @@ final class HomeViewModel {
     
     private func getNowPlayingMovies() {
         manager.request(model: Movie.self,
-                        endpoint: .nowPlayingMovie) { data, errorMessage in
+                        endpoint: Endpoint.nowPlayingMovie.rawValue) { data, errorMessage in
             if let errorMessage {
                 self.error?(errorMessage)
             } else if let data {
@@ -47,7 +47,7 @@ final class HomeViewModel {
     
     private func getUpcomingMovies() {
         manager.request(model: Movie.self,
-                        endpoint: .upcomingMovie) { data, errorMessage in
+                        endpoint: Endpoint.upcomingMovie.rawValue) { data, errorMessage in
             if let errorMessage {
                 self.error?(errorMessage)
             } else if let data {
@@ -59,7 +59,7 @@ final class HomeViewModel {
     
     private func getTopRatedMovies() {
         manager.request(model: Movie.self,
-                        endpoint: .topRatedMovie) { data, errorMessage in
+                        endpoint: Endpoint.topRatedMovie.rawValue) { data, errorMessage in
             if let errorMessage {
                 self.error?(errorMessage)
             } else if let data {

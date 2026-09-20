@@ -58,7 +58,7 @@ class ActorController: BaseController {
     }
 }
 
-extension ActorController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ActorController: CollectionConfig {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.items.count
     }
