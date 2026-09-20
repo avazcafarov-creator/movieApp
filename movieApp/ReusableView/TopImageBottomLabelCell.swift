@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol TopImageBottomLabelProtocol {
+    var imagePath: String { get }
+    var labelText: String { get }
+}
+
 class TopImageBottomLabelCell: UICollectionViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -24,6 +29,8 @@ class TopImageBottomLabelCell: UICollectionViewCell {
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
+    
+    static let identifier = "TopImageBottomLabelCell"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,9 +55,14 @@ class TopImageBottomLabelCell: UICollectionViewCell {
             topImage.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -8)
         ])
     }
-    
-    func configure(data: MovieResult) {
-        titleLabel.text = data.originalTitle
-        topImage.loadImage(data: data.posterPath ?? "")
+
+//    func configure(data: MovieResult) {
+//        titleLabel.text = data.originalTitle
+//        topImage.loadImage(data: data.posterPath ?? "")
+//    }
+
+    func configure(data: TopImageBottomLabelProtocol) {
+        titleLabel.text = data.labelText
+        topImage.loadImage(data: data.imagePath)
     }
 }
