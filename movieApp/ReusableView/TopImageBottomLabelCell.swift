@@ -51,6 +51,6 @@ class TopImageBottomLabelCell: UICollectionViewCell {
     
     func configure(data: MovieResult) {
         titleLabel.text = data.originalTitle
-        topImage.backgroundColor = .orange
+        topImage.loadImage(data: data.posterPath ?? "")
     }
 }

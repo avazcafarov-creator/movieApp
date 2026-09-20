@@ -20,13 +20,15 @@ class HomeCell: UICollectionViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = .zero
         layout.minimumLineSpacing = 16
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = .init(top: 0, left: 32, bottom: 0, right: 16)
         
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.delegate = self
         collection.dataSource = self
         collection.backgroundColor = .clear
         collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.showsHorizontalScrollIndicator = false
         collection.register(TopImageBottomLabelCell.self, forCellWithReuseIdentifier: "TopImageBottomLabelCell")
         return collection
     }()
@@ -47,7 +49,7 @@ class HomeCell: UICollectionViewCell {
         addSubview(collection)
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
             
             collection.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             collection.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -56,20 +58,23 @@ class HomeCell: UICollectionViewCell {
         ])
     }
     
+    private var items = [MovieResult]()
+    
     func configure(data: HomeModel) {
         titleLabel.text = data.title
+        items = data.movies
         collection.reloadData()
     }
 }
 
 extension HomeCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopImageBottomLabelCell", for: indexPath) as! TopImageBottomLabelCell
-//        cell.configure(data: MovieResult)
+        cell.configure(data: items[indexPath.item])
         return cell
     }
     

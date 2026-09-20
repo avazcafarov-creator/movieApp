@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB444776305D650F00E1C634 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CB444775305D650F00E1C634 /* Alamofire */; };
+		CBAE759C30601A7200CEA4C6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CBAE759B30601A7200CEA4C6 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBAE759C30601A7200CEA4C6 /* Kingfisher in Frameworks */,
 				CB444776305D650F00E1C634 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +86,7 @@
 			name = movieApp;
 			packageProductDependencies = (
 				CB444775305D650F00E1C634 /* Alamofire */,
+				CBAE759B30601A7200CEA4C6 /* Kingfisher */,
 			);
 			productName = movieApp;
 			productReference = CB7FC7FF305D4DC0001774B7 /* movieApp.app */;
@@ -115,6 +118,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CB444774305D650F00E1C634 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				CBAE759A30601A7200CEA4C6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CB7FC800305D4DC0001774B7 /* Products */;
@@ -364,6 +368,14 @@
 				minimumVersion = 5.12.2;
 			};
 		};
+		CBAE759A30601A7200CEA4C6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -371,6 +383,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB444774305D650F00E1C634 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		CBAE759B30601A7200CEA4C6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBAE759A30601A7200CEA4C6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

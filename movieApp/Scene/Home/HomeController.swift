@@ -19,6 +19,7 @@ class HomeController: BaseController {
         collection.dataSource = self
         collection.backgroundColor = .clear
         collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.showsVerticalScrollIndicator = false
         collection.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.identifier)
         return collection
     }()
@@ -63,7 +64,6 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.identifier, for: indexPath) as! HomeCell
         cell.configure(data: viewModel.items[indexPath.item])
-        cell.backgroundColor = .green
         return cell
     }
     

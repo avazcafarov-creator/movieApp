@@ -19,10 +19,18 @@ class CoreHelper {
     
     private let version = "3"
     private let baseURL = "https://api.themoviedb.org"
+    
+    private let imageSize = "w500"
+    private let imageBaseURL = "https://image.tmdb.org/t/p/"
+    
     let header: HTTPHeaders = ["accept": "application/json",
                                     "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjI2YjgwZjYyOTg3YTQzYzczZDRlYjlhYWFlODc4ZSIsIm5iZiI6MTc4OTcyODU2MC4yNjU5OTk4LCJzdWIiOiI2YWFkMTczMDJiOGQwOGZiNTAzY2IxNWUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.6nmyBMMJag71R7xvSx8Hjl32jAOqzC8BzO0QZvInUKw"]
     
     func configureURL(endpoint: Endpoint) -> String {
         baseURL + "/" + version + "/" + endpoint.rawValue
+    }
+    
+    func configureImageURL(path: String) -> String {
+        imageBaseURL + imageSize + path
     }
 }
