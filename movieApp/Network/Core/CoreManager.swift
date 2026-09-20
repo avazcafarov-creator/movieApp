@@ -18,9 +18,9 @@ class CoreManager {
                              completion: @escaping (T?, String?) -> Void) {
         
         AF.request(CoreHelper.shared.configureURL(endpoint: endpoint),
-        method: method,
-        parameters: parameter,
-                   encoding: encoding == .url ? URLEncoding.default : JSONEncoding.default).responseData { response in
+                   method: method,
+                   parameters: parameter,
+                   encoding: encoding == .url ? URLEncoding.default : JSONEncoding.default, headers: CoreHelper.shared.header).responseData { response in
             switch response.result {
             case .success(let data):
                 do {
@@ -30,7 +30,7 @@ class CoreManager {
                     completion(nil, error.localizedDescription)
                 }
             case .failure(let error):
-            completion(nil, error.localizedDescription)
+                completion(nil, error.localizedDescription)
             }
         }
     }
