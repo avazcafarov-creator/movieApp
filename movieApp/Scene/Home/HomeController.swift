@@ -59,11 +59,11 @@ class HomeController: BaseController {
 
 extension HomeController: CollectionConfig {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.items.count
+        viewModel.movieItems.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.identifier, for: indexPath) as! HomeCell
-        cell.configure(data: viewModel.items[indexPath.item])
+        cell.configure(data: viewModel.movieItems[indexPath.item])
         return cell
     }
     

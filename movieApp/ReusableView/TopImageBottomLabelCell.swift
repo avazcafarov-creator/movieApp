@@ -55,12 +55,7 @@ class TopImageBottomLabelCell: UICollectionViewCell {
             topImage.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -8)
         ])
     }
-
-//    func configure(data: MovieResult) {
-//        titleLabel.text = data.originalTitle
-//        topImage.loadImage(data: data.posterPath ?? "")
-//    }
-
+    
     func configure(data: TopImageBottomLabelProtocol) {
         titleLabel.text = data.labelText
         topImage.loadImage(data: data.imagePath)
