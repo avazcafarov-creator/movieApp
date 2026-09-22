@@ -25,7 +25,16 @@ class ActorController: BaseController {
         return collection
     }()
 
-    private let viewModel = ActorViewModel()
+    private var viewModel: ActorViewModel
+    
+    init(viewModel: ActorViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @MainActor required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +67,7 @@ class ActorController: BaseController {
     }
 }
 
+// MARK: - ActorController configurations
 extension ActorController: CollectionConfig {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.items.count
@@ -71,5 +81,9 @@ extension ActorController: CollectionConfig {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: (collectionView.frame.width - 24) / 2, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        viewModel.pagination(index: indexPath.item)
     }
 }

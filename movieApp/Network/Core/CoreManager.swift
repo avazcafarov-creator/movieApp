@@ -17,7 +17,7 @@ class CoreManager {
                              encoding: EncodingType = .url,
                              completion: @escaping (T?, String?) -> Void) {
         
-        AF.request(CoreHelper.shared.configureURL(endpoint: endpoint),
+        AF.request(endpoint,
                    method: method,
                    parameters: parameter,
                    encoding: encoding == .url ? URLEncoding.default : JSONEncoding.default, headers: CoreHelper.shared.header).responseData { response in

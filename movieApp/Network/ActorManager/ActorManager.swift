@@ -7,11 +7,12 @@
 
 import Foundation
 
-class ActorManager {
+class ActorManager: ActorManagerUseCase {
     let manager = CoreManager()
-    func getPopularActors(completion: @escaping (Actor?, String?) -> Void) {
+    
+    func getPopularActors(page: String, completion: @escaping (Actor?, String?) -> Void) {
         manager.request(model: Actor.self,
-                        endpoint: ActorEndpoint.popularActor.rawValue,
+                        endpoint: ActorEndpoint.popularActor(page: page).path,
                         completion: completion)
     }
 }

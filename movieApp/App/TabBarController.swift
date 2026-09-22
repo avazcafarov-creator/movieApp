@@ -22,7 +22,7 @@ class TabBarController: UITabBarController {
                                           tag: 0)
         let homeNav = UINavigationController(rootViewController: homeController)
         
-        let actorController = ActorController()
+        let actorController = ActorController(viewModel: .init(manager: ActorManager()))
         actorController.tabBarItem = .init(title: nil,
                                           image: .init(systemName: "person.fill"),
                                           tag: 1)
